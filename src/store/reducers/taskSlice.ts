@@ -12,13 +12,8 @@ const taskSlice = createSlice({
   name: "task",
   initialState,
   reducers: {
-    addTask(state, action: PayloadAction<string>) {
-      const newTask: Task = {
-        id: state.length + 1,
-        title: action.payload,
-        done: false,
-      };
-      state.push(newTask);
+    addTask(state, action: PayloadAction<Task>) {
+      state.push(action.payload);
     },
     toggleTask(state, action: PayloadAction<number>) {
       const task = state.find((task) => task.id === action.payload);

@@ -13,6 +13,7 @@ import {
 const TaskListPage: FC = () => {
   const { t } = useTranslation();
   const tasks = useLVSelector((state) => state.task);
+  console.log(tasks)
   const dispatch = useLVDispatch();
   const [checked, setChecked] = useState(tasks.filter(task => task.done).map((task) => task.id));
 
@@ -28,7 +29,7 @@ const TaskListPage: FC = () => {
 
     setChecked(newChecked);
     const taskToToggle = tasks.find(task => task.id === value);
-    taskToToggle && dispatch(toggleTask(taskToToggle.id));
+    taskToToggle && dispatch(toggleTask(taskToToggle.id as number));
     
   };
 
@@ -53,7 +54,7 @@ const TaskListPage: FC = () => {
                   secondaryAction={
                     <Checkbox
                       edge="end"
-                      onChange={handleToggle(task.id)}
+                      onChange={handleToggle(task.id as number)}
                       checked={checked.indexOf(task.id) !== -1}
                       inputProps={{ "aria-labelledby": labelId }}
                     />
@@ -71,9 +72,9 @@ const TaskListPage: FC = () => {
             })}
           </List>
         </CardContent>
-        <CardActions>
-          <Button component={Link} to="/new-ticket">
-            {t("btn.add-task")}
+        <CardActions className='flex flex-row justify-end'>
+          <Button variant="contained" component={Link} to="/new" className="bg-lv-orange">
+            {t("task.add")}
           </Button>
         </CardActions>
       </Card>

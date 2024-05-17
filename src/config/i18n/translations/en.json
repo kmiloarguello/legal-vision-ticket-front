@@ -1,0 +1,10 @@
+{
+  "app.title": "Legal Vision Tasks app",
+  "task.label": "Task name",
+  "task.required": "Task is required",
+  "task.add": "Add Task",
+  "tasks.empty": "No tasks",
+  "task.list": "Task List",
+  "error404.title": "404",
+  "error404.description": "Page not found"
+}
